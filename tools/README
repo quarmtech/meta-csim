@@ -1,0 +1,74 @@
+# meta-csim
+
+PSI Yocto BSP for CSIM SCM-i.MX
+======================================
+
+To get the BSP you need to have `repo` installed.
+
+Install the `repo` utility: (only need to do this once):
+--------------------------------------------------------
+$: mkdir ~/bin
+$: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo  > ~/bin/repo
+$: chmod a+x ~/bin/repo
+$: PATH=${PATH}:~/bin
+
+
+Download the Yocto Project Environment into your directory:
+-----------------------------------------------------------
+$: mkdir yocto-csim
+$: cd acd-steris-yocto-bsp
+$: repo init -u https://Bphagan@bitbucket.org/Bphagan/manifest-csim.git -b master
+$: repo sync
+
+<manifest>                      Description
+default.xml                     The latest PSI-csim SCM BSP
+                                (this is the default value)
+
+[1] When the default manifest is used, the project environment can be updated
+to the latest release via repo sync.
+
+For errors with repo init, remove the .repo directory and run repo init again.
+
+See ChangeLog for description of patch releases and tags for each update.
+
+Setup the build folder for a BSP release:
+-----------------------------------------
+Note: The remaining instructions are for setting up a BSP release only.
+
+$: [MACHINE=<machine>] [DISTRO=fsl-imx-<backend>] source ./acd-setup-release.sh -b bld-<backend>
+
+The <machine> options for PSI csim MX6 SCM (supported by meta-csim layer) are:
+ - MX6DQSCM:
+    psi-csim-scm
+
+<backend>   Graphics backend type
+x11         X11 (this is the default if DISTRO is unspecified)
+wayland     Wayland
+xwayland    Wayland with XWayland support
+fb          Framebuffer
+
+Note DirectFB is not supported in 4.1.15 release.
+
+Note if the poky community distro is used then build breaks will happen with some
+components using meta-fsl-bsp-release layer.
+
+Examples:
+
+Setup for X11.
+$: MACHINE=psi-csim-scm DISTRO=fsl-imx-x11 source ./csim-setup-release.sh -b build-x11
+
+Setup for Wayland.
+$: MACHINE=psi-csim-scm DISTRO=fsl-imx-wayland source ./acd-setup-release.sh -b build-wayland
+
+Setup for Wayland and X11.
+$: MACHINE=psi-csim-scm DISTRO=fsl-imx-xwayland source ./acd-setup-release.sh -b build-xwayland
+
+Setup for Frame Buffer.
+$: MACHINE=psi-csim-scm DISTRO=fsl-imx-fb source ./acd-setup-release.sh -b build-fb
+
+
+Build an image:
+---------------
+bitbake csim-image-imx
+
+
