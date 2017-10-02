@@ -3,7 +3,7 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
-SRC_URI = "git://git@bitbucket.org/bphagan/linux-csim.git;protocol=ssh" 
+SRC_URI = "git://git@bitbucket.org/bphagan/linux-csim.git;branch=${SRCBRANCH};protocol=ssh" 
 
 
 SRCBRANCH = "csim1-4.1.15"

@@ -3,7 +3,7 @@
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
-SRC_URI = "git://git@bitbucket.org/bphagan/uboot-csim.git;protocol=ssh" 
+SRC_URI = "git://git@bitbucket.org/bphagan/uboot-csim.git;branch=${SRCBRANCH};protocol=ssh" 
 
 SRCBRANCH = "csim1-4.1.15"
 SRCREV = "${AUTOREV}"
