@@ -56,11 +56,11 @@ other layers needed. e.g.:
     /path/to/yocto/meta \
     /path/to/yocto/meta-poky \
     /path/to/yocto/meta-yocto-bsp \
-    /path/to/yocto/meta-meta-csim \
+    /path/to/yocto/meta-csim \
     "
 
 
 II. Misc
 ========
 
---- replace with specific information about the meta-acd-steris layer ---
+--- replace with specific information about the meta-csim layer ---
